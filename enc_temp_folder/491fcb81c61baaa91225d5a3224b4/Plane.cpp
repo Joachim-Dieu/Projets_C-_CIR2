@@ -93,8 +93,8 @@ Coordonnee Plane::getPosition() {
 
 void Plane::To_Fly_to_Airport() {
 
-	float X = Position_Plane_.getX();
-	float Y = Position_Plane_.getY();
+	int X = Position_Plane_.getX();
+	int Y = Position_Plane_.getY();
 
 	cout << radius_ << " , " << angle_ << endl;
 
@@ -109,24 +109,24 @@ void Plane::To_Fly_to_Airport() {
 }
 
 void Plane::To_Rotate() {
-	float X = Position_Plane_.getX();
-	float Y = Position_Plane_.getY();
+	int X = Position_Plane_.getX();
+	int Y = Position_Plane_.getY();
 
 	X = radius_ * cos(angle_);
 	Y = radius_ * sin(angle_);
 }
 
 void Plane::To_Land() {
-	float X = Position_Plane_.getX();
-	float Y = Position_Plane_.getY();
+	int X = Position_Plane_.getX();
+	int Y = Position_Plane_.getY();
 
 	X = radius_ * cos(angle_);
 	Y = radius_ * sin(angle_);
 }
 
 void Plane::To_TakeOff() {
-	float X = Position_Plane_.getX();
-	float Y = Position_Plane_.getY();
+	int X = Position_Plane_.getX();
+	int Y = Position_Plane_.getY();
 
 	X = radius_ * cos(angle_);
 	Y = radius_ * sin(angle_);
