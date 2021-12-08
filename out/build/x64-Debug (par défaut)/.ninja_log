@@ -1,0 +1,9 @@
+# ninja log v5
+16	1430	660660136	CMakeFiles/Projets.dir/main.cpp.obj	fcba291723417b50
+1	1442	660660136	CMakeFiles/Projets.dir/Coordonnee.cpp.obj	f344c12ced1e2d1a
+1	1113	660660704	CMakeFiles/Projets.dir/Plane.cpp.obj	5cf15a8f8110a15a
+1116	1858	660660705	Projets.exe	d691f832269801e7
+1	1547	660661050	CMakeFiles/Projets.dir/Plane.cpp.obj	5cf15a8f8110a15a
+1550	1939	660661050	Projets.exe	d691f832269801e7
+1	1477	660661141	CMakeFiles/Projets.dir/Plane.cpp.obj	5cf15a8f8110a15a
+1482	1778	660661141	Projets.exe	d691f832269801e7

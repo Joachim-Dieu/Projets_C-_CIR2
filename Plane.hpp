@@ -2,7 +2,7 @@
 #include "Coordonnee.hpp"
 #include <thread>
 #include <mutex>
-#include <math.h>
+#include <cmath>
 #include <iostream>
 #include <string>
 #include <vector>
@@ -28,20 +28,21 @@ private:
 	bool Land_ = false;
 	bool TakeOff_ = false;
 	bool stop_thread_ = false;
-	
+
 
 public:
 	//Plane();
-	Plane(string& identification,Coordonnee& Position_Plane, Coordonnee& Destination);
+	Plane(string& identification, Coordonnee& Position_Plane, Coordonnee& Destination);
 	void To_Fly_to_Airport();
 	void To_Rotate();
 	void To_Land();
 	void To_TakeOff();
 	void Update();
-	void FindAngle();
+	float FindAngle();
+	//float FindRadius();
 	Coordonnee getPosition();
 	//~Plane();
-	
+
 };
 
 void update_plane(Plane& plane, bool& stop_thread);
@@ -52,7 +53,7 @@ void update_plane(Plane& plane, bool& stop_thread);
 //									   //
 //*************************************//
 
-class Airport {
+/**class Airport {
 private:
 	vector <Plane> Plane_Who_Wait;
 	Coordonnee Position_Airport;
@@ -63,6 +64,6 @@ public:
 };
 
 
-
+**/
 
 #endif
