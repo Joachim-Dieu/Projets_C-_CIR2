@@ -12,19 +12,19 @@ using namespace std;
 class Coordonnee {
 
 private:
-	int x, y, z;
+	float x, y, z;
 
 public:
 	Coordonnee();
-	Coordonnee(int newx, int newy, int newz);
+	Coordonnee(float newx, float newy, float newz);
 
-	void setXYZ(int& newx, int& newy, int& newz);
-	void setX(int newx);
-	void setY(int newy);
-	void setZ(int newz);
-	int getX();
-	int getY();
-	int getZ();
+	void setXYZ(float& newx, float& newy, float& newz);
+	void setX(float newx);
+	void setY(float newy);
+	void setZ(float newz);
+	float getX();
+	float getY();
+	float getZ();
 
 	void print() const;
 };
