@@ -9,7 +9,7 @@ int main()
 	bool stop_thread = false;
 	Coordonnee Position_Plane(0, 0, 0);
 	string SuperPlane = "test";
-	Coordonnee Destination(10, 20, 0);
+	Coordonnee Destination(10.f, 10.f, 0);
 	Plane myPlane(SuperPlane, Position_Plane, Destination);
 	//airport.add_a_plane_to_queue(myPlane);
 
