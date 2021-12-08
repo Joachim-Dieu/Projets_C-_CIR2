@@ -18,10 +18,10 @@ Plane::Plane(string& identification, Coordonnee& Position_Plane, Coordonnee& Des
 }
 
 float Plane::FindAngle() {
-	int DestinationX = Destination_.getX();
-	int DestinationY = Destination_.getY();
-	int PlaneX = Position_Plane_.getX();
-	int PlaneY = Position_Plane_.getY();
+	float DestinationX = Destination_.getX();
+	float DestinationY = Destination_.getY();
+	float PlaneX = Position_Plane_.getX();
+	float PlaneY = Position_Plane_.getY();
 
 	if ((DestinationX > PlaneX) && (DestinationY > PlaneY)) {									//+X et +Y 
 		angle_ = atan((DestinationY - PlaneY) / (DestinationX - PlaneX)) * (180 / PI);

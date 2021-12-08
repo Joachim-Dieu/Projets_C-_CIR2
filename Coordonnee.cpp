@@ -7,39 +7,39 @@ Coordonnee::Coordonnee() {
 	z = (rand() % 100);
 }
 
-Coordonnee::Coordonnee(int newx, int newy, int newz) {
+Coordonnee::Coordonnee(float newx, float newy, float newz) {
 	this->x = newx;
 	this->y = newy;
 	this->z = newz;
 }
 
-void Coordonnee::setXYZ(int& newx, int& newy, int& newz) {
+void Coordonnee::setXYZ(float& newx, float& newy, float& newz) {
 	this->x = newx;
 	this->y = newy;
 	this->z = newz;
 }
 
-void Coordonnee::setX(int newx) {
+void Coordonnee::setX(float newx) {
 	this->x = newx;
 }
 
-void Coordonnee::setY(int newy) {
+void Coordonnee::setY(float newy) {
 	this->y = newy;
 }
 
-void Coordonnee::setZ(int newz) {
+void Coordonnee::setZ(float newz) {
 	this->z = newz;
 }
 
-int Coordonnee::getX(){
+float Coordonnee::getX(){
 	return x;
 }
 
-int Coordonnee::getY(){
+float Coordonnee::getY(){
 	return y;
 }
 
-int Coordonnee::getZ(){
+float Coordonnee::getZ(){
 	return z;
 }
 
