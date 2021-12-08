@@ -4,16 +4,15 @@
 
 Plane::Plane(string& identification, Coordonnee& Position_Plane, Coordonnee& Destination) :
 	TakeOff_(false),
-	Fly_to_Airport_(true),
-	Rotate_(false),
+	Fly_to_Airport_(false),
+	Rotate_(true),
 	Land_(false)
 {
 	this->identification_ = identification;
 	this->Position_Plane_ = Position_Plane;
 	this->Destination_ = Destination;
 	this->angle_ = FindAngle();
-	this->radius_ = 2;
-	Update();
+	this->radius_ = sqrt(pow((Destination_.getX() - Position_Plane_.getX()), 2) + pow((Destination_.getY() - Position_Plane_.getY()), 2));
 	t_ = std::thread(update_plane, std::ref(*this), std::ref(stop_thread_));
 }
 
@@ -53,12 +52,12 @@ float Plane::FindAngle() {
 
 void Plane::Update()
 {
-	int DestinationX = Destination_.getX();
-	int DestinationY = Destination_.getY();
-	int PlaneX = Position_Plane_.getX();
-	int PlaneY = Position_Plane_.getY();
+	float DestinationX = Destination_.getX();
+	float DestinationY = Destination_.getY();
+	float PlaneX = Position_Plane_.getX();
+	float PlaneY = Position_Plane_.getY();
 
-	if ((DestinationX == PlaneX) || (DestinationY == PlaneY)) {
+	if ((DestinationX == PlaneX) && (DestinationY == PlaneY)) {
 		stop_thread_ = true;
 		cout << "L'Avion a fini sa course" << endl;
 	}
@@ -70,6 +69,7 @@ void Plane::Update()
 		}
 
 		if ((this->Rotate_) == 1) {
+			cout << endl;
 			cout << "Rotate" << endl;
 			To_Rotate();
 		}
@@ -93,13 +93,18 @@ Coordonnee Plane::getPosition() {
 
 void Plane::To_Fly_to_Airport() {
 
-	int X = Position_Plane_.getX();
-	int Y = Position_Plane_.getY();
+	float X = Position_Plane_.getX();
+	float Y = Position_Plane_.getY();
 
 	cout << radius_ << " , " << angle_ << endl;
 
-	X += radius_ * cos(angle_);
-	Y += radius_ * sin(angle_);
+	//cout << "Avant :" << X << " , " << Y << endl;
+	//cout << "Avant :" << cos((angle_* PI) / 180)  << " , " << sin((angle_* PI) / 180) << endl;
+
+	X += ((radius_)/10) * (cos((angle_ * PI) / 180));
+	Y += ((radius_)/10) * (sin((angle_ * PI) / 180));
+
+	//cout << "Apres" <<X << " , " << Y << endl;
 
 	Position_Plane_.setX(X);
 	Position_Plane_.setY(Y);
@@ -108,26 +113,34 @@ void Plane::To_Fly_to_Airport() {
 
 }
 
-void Plane::To_Rotate() {
+void Plane::To_Rotate() {		//Pour airport 
+	radius_ = 5;
 	int X = Position_Plane_.getX();
 	int Y = Position_Plane_.getY();
 
-	X = radius_ * cos(angle_);
-	Y = radius_ * sin(angle_);
+	
+	cout << angle_ << endl;		//Prends l'angle entre l'avion et l'airport alors qu'il devrait prendre angle airport avion 
+
+	X = radius_ * (cos((angle_ * PI) / 180)) + Destination_.getX();
+	Y = radius_ * (sin((angle_ * PI) / 180)) + Destination_.getY();
+
+	Position_Plane_.setX(X);
+	Position_Plane_.setY(Y);
+	
+	angle_ = (angle_ + 20.f);
 }
 
 void Plane::To_Land() {
 	int X = Position_Plane_.getX();
 	int Y = Position_Plane_.getY();
 
-	X = radius_ * cos(angle_);
-	Y = radius_ * sin(angle_);
+	
 }
 
 void Plane::To_TakeOff() {
 	int X = Position_Plane_.getX();
 	int Y = Position_Plane_.getY();
-
+	
 	X = radius_ * cos(angle_);
 	Y = radius_ * sin(angle_);
 }
@@ -143,9 +156,9 @@ void update_plane(Plane& plane, bool& stop_thread)
 {
 	while (!stop_thread)
 	{
+		plane.getPosition().print();
 		std::this_thread::sleep_for(1s);
 		plane.Update();
-		plane.getPosition().print();
 	}
 }
 /*
